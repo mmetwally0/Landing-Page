@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: "Mochiy Pop P One", sans-serif;
+}
+
+.flex {
+  display: flex;
+}
+
+nav {
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(0.5em);
+  color: white;
+  height: 3.5em;
+  width: 100%;
+  z-index: 10000;
+
+  .logo-name {
+    font-weight: 700;
+    font-size: 1.8em;
+    margin: 0 2rem;
+
+    span{
+      font-size: 0.5em;
+    }
+  }
+
+  .navigation-links {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    li {
+      text-align: center;
+      padding: 1rem 1rem 0 1rem;
+      list-style: none;
+      height: 100%;
+      width: fit-content;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    li:hover {
+      background-color: rgba(0, 0, 0, 0.4);
+      color: rgb(111, 157, 197);
+      cursor: pointer;
+    }
+  }
+}
+
+section {
+  height: fit-content;
+  color: white;
+  min-height: 100vh;
+  background-image: url(../images/section-back.jpg);
+  background-size: contain;
+  margin-top: 0;
+
+  .section-container{
+    margin: 0px 4rem;
+    padding: 1rem 0;
+  }
+
+  h1{
+    font-size: 3em;
+  }
+
+  .section-content{
+    font-family: arial;
+    line-height: 1.5em;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(1em);
+    border-radius: 15px;
+    padding: 2rem;
+  }
+}
+
+.home-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+  color: white;
+
+  @supports (-webkit-text-stroke: 1px black) {
+    h1:hover {
+      -webkit-text-stroke: 2px white;
+      -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    }
+  }
+}
+
+
+.back-video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: auto;
+}
+
+.active{
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgb(111, 157, 197);
+}
