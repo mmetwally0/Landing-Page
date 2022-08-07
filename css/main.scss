@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
 
-
 @mixin mobile-1 {
-  @media(max-width: 1366px) {
-    @content
+  @media (max-width: 845px) {
+    @content;
+  }
+}
+
+@mixin mobile-2 {
+  @media (max-width: 550px) {
+    @content;
   }
 }
 
@@ -39,7 +44,7 @@ nav {
     font-size: 1.8em;
     margin: 0 2rem;
 
-    span{
+    span {
       font-size: 0.5em;
     }
   }
@@ -48,6 +53,23 @@ nav {
     height: 100%;
     display: flex;
     align-items: center;
+    position: relative;
+
+    @include mobile-1 {
+      flex-direction: column;
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(0.5em);
+      height: fit-content;
+      width: 20em;
+      position: absolute;
+      right: 0;
+      top: 2.5em;
+      padding: 0;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      border-top: 4px solid black;
+      display: none;
+      transition: all 3s ease-in-out;
+    }
 
     li {
       text-align: center;
@@ -55,8 +77,15 @@ nav {
       list-style: none;
       height: 100%;
       width: fit-content;
-      font-size: 1.2em;
-      font-weight: 600;
+      font-size: 1em;
+      font-weight: 500;
+
+      @include mobile-1 {
+        height: 5em;
+        width: 100%;
+        margin: 0;
+        padding-top: 1.5em;
+      }
     }
 
     li:hover {
@@ -75,16 +104,20 @@ section {
   background-size: contain;
   margin-top: 0;
 
-  .section-container{
+  .section-container {
     margin: 0px 4rem;
     padding: 1rem 0;
+    
+    @include mobile-2{
+      margin: 0px 2rem;      
+    }
   }
 
-  h1{
+  h1 {
     font-size: 3em;
   }
 
-  .section-content{
+  .section-content {
     font-family: arial;
     line-height: 1.5em;
     color: black;
@@ -95,46 +128,124 @@ section {
   }
 }
 
-.home-page {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 4.3em;
-  color: white;
-
-  @supports (-webkit-text-stroke: 1px black) {
-    h1:hover {
-      -webkit-text-stroke: 2px white;
-      -webkit-text-fill-color: rgba(255, 255, 255, 0);
-    }
-  }
-}
-
-
-.back-video{
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  width: 100vw;
-  height: auto;
-}
-
-.active{
-  background-color: rgba(0, 0, 0, 0.4);
-  color: rgb(111, 157, 197);
-}
-
-footer{
+footer {
   background-color: rgba(0, 0, 0, 1);
   justify-content: center;
   align-items: center;
   height: 3em;
   color: white;
 
-  span{
+  span {
     margin-left: 1em;
     font-size: 0.6em;
+  }
+}
+
+.background-video {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  video {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    z-index: -99;
+    width: auto;
+    height: auto;
+    min-height: 100%;
+    min-width: 100%;
+    transform: translate(-10%, -10%);
+  }
+
+  .main-text {
+    font-size: 4.3em;
+    color: white;
+
+    @include mobile-1 {
+      font-size: 3em;
+      margin: 1em;
+    }
+  }
+
+  @supports (-webkit-text-stroke: 1px black) {
+    .main-text:hover {
+      -webkit-text-stroke: 2px white;
+      -webkit-text-fill-color: rgba(255, 255, 255, 0);
+    }
+  }
+}
+
+.menu-btn {
+  display: none;
+  position: absolute;
+  top: 0.7em;
+  right: 0.7em;
+  height: 2.3em;
+  width: 2.3em;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(0.5em);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+
+  @include mobile-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.menu-btn-burger {
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn-burger::before,
+.menu-btn-burger::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn-burger::before {
+  transform: translateY(-7px);
+}
+
+.menu-btn-burger::after {
+  transform: translateY(8px);
+}
+
+.active {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgb(111, 157, 197);
+}
+
+.open {
+  display: flex !important;
+}
+
+.menu-btn.animate {
+  .menu-btn-burger {
+    transform: translateX(-30px);
+    background: transparent;
+  }
+
+  .menu-btn-burger::before{
+    transform: rotate(45deg) translate(21px, -21px);
+  }
+  .menu-btn-burger::after{
+    transform: rotate(-45deg) translate(21px, 21px);
   }
 }

@@ -64,3 +64,10 @@ document.addEventListener('scroll', (event) => {
     })
 })
 
+const btn = document.querySelector('.menu-btn')
+
+btn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    btn.classList.toggle('animate');
+
+})
