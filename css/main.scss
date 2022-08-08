@@ -22,7 +22,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
+  // scroll-behavior: smooth;
   font-family: "Mochiy Pop P One", sans-serif;
 }
 
@@ -40,11 +40,11 @@ body {
   display: flex !important;
 }
 
-.hide{
+.hide {
   transform: translateY(-3.5em);
 }
 
-.scroll-btn-visible{
+.scroll-btn-visible {
   transform: translate(0) !important;
 }
 
@@ -237,7 +237,7 @@ footer {
 }
 
 // Scroll to top button
-#btnScrollToTop{
+#btnScrollToTop {
   position: fixed;
   right: 10px;
   bottom: 10px;
@@ -288,7 +288,6 @@ footer {
   }
 }
 
-
-#btnScrollToTop:active{
+#btnScrollToTop:active {
   background-color: rgb(146, 146, 146);
 }
