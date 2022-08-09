@@ -5,6 +5,12 @@ const menuBtn = document.querySelector(".menu-btn");
 const nav = document.querySelector("nav");
 const btnScrollToTop = document.querySelector('#btnScrollToTop');
 
+const isInViewPort = function(element) {
+    const rect = element.getBoundingClientRect();
+    // Returns true if the element is in view port
+    return (100 - rect.height <= rect.top && rect.top < 100)
+}
+
 // Create A document fragment to store the 'li' elements before appending them to the DOM
 const fragment = document.createDocumentFragment();
 
@@ -42,12 +48,16 @@ document.addEventListener("scroll", (event) => {
     sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         const navLink = document.querySelector(`#${section.dataset.nav}`);
+        const secContainer = document.querySelector(`#${section.id} > .section-container`)
 
-        // Check if the section is in viewPort
-        if (10 - rect.height <= rect.top && rect.top < 10) {
+        // Check if the section is in view port
+        if (isInViewPort(section)) {
             navLink.classList.add("active");
+            secContainer.classList.add('active');
+
         } else {
-            navLink.classList.remove("active");
+            navLink.classList.remove('active');
+            secContainer.classList.remove('active')
         }
     });
 
@@ -85,5 +95,8 @@ if (window.scrollY === 0) {
 
 // Scroll To Top
 btnScrollToTop.addEventListener('click', () => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 })

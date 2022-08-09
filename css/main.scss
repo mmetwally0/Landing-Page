@@ -36,6 +36,10 @@ body {
   color: rgb(111, 157, 197);
 }
 
+.section-container.active{
+  background-color: rgba(192, 194, 204, 0.5);
+}
+
 .open {
   display: flex !important;
 }
@@ -201,6 +205,7 @@ section {
   .section-container {
     margin: 0px 4rem;
     padding: 1rem 0;
+    border-radius: 15px;
 
     @include mobile-2 {
       margin: 0px 2rem;
